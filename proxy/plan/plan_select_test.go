@@ -2663,6 +2663,8 @@ func TestSelectKingshardDateYear(t *testing.T) {
 		},
 	}
 
+	time.Local = time.FixedZone("CST", 28800)
+
 	t.Logf("location = %v", time.Now().Location())
 	name, offset := time.Now().Zone()
 	t.Logf("zone = %v, %v", name, offset)
