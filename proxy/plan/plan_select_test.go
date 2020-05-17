@@ -2663,8 +2663,11 @@ func TestSelectKingshardDateYear(t *testing.T) {
 		},
 	}
 
-	t.Logf("1388505600 = %v", time.Unix(1388505600,0).Format("2006-01-02 15:04:05"))
-	t.Logf("1577808000 = %v", time.Unix(1577808000,0).Format("2006-01-02 15:04:05"))
+	t.Logf("location = %v", time.Now().Location())
+	name, offset := time.Now().Zone()
+	t.Logf("zone = %v, %v", name, offset)
+	t.Logf("1388505600 = %v", time.Unix(1388505600, 0).Format("2006-01-02 15:04:05"))
+	t.Logf("1577808000 = %v", time.Unix(1577808000, 0).Format("2006-01-02 15:04:05"))
 
 	for _, test := range tests {
 		t.Run(test.sql, getTestFunc(ns, test))
